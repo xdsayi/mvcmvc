@@ -1,0 +1,41 @@
+﻿@model List<mvcmvc.Data.Blog>
+
+@{
+    ViewData["Title"] = "Bloglar";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Varsayılan layout dosyasını kullanıyoruz
+}
+
+<h1 class="my-4">Bloglar</h1>
+    
+<div class="blog-list">
+    <div class="container">
+        @foreach (var blog in Model)
+        {
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <img src="@blog.ImagePath" class="card-img-top" alt="@blog.Title"> <!-- Resim Eklendi -->
+                </div>
+                <div class="col-md-9 d-flex flex-column justify-content-center">
+                    <h3 class="card-title">@blog.Title</h3>
+                    <p class="card-text">
+                        @if (blog.Content.Length > 100)
+                        {
+                            @blog.Content.Substring(0, 100)
+                            ;
+                        }
+                        else
+                        {
+                            @blog.Content
+                        }
+                    </p>
+                    <p class="card-text"><small class="text-muted">Yazar: @blog.Director</small></p>
+                    <p class="card-text"><small class="text-muted">Yazar: @blog.Genre</small></p>
+                    <p class="card-text"><small class="text-muted">Yayınlanma Tarihi: @blog.PublishDate.ToShortDateString()</small></p>
+                    <a href="@Url.Action("BlogDetail", "Home", new { id = blog.Id })" class="btn btn-primary">Devamını Oku</a> <!-- Yönlendirme Eklendi -->
+                </div>
+
+            </div>
+        }
+
+    </div>
+</div>

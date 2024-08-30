@@ -1,0 +1,41 @@
+﻿@model List<mvcmvc.Data.Film>
+
+@{
+    ViewData["Title"] = "Filmlerimiz";
+    Layout = "~/Views/Shared/_Layout.cshtml"; // Varsayılan layout dosyasını kullanıyoruz
+}
+
+<h1 class="my-4">Çektiğimiz Filmler</h1>
+
+<div class="blog-list">
+    <div class="container">
+        @foreach (var film in Model)
+        {
+            <div class="row mb-4">
+                <div class="col-md-3">
+                    <img src="@film.PosterPath" class="card-img-top" alt="@film.Title"> <!-- Resim Eklendi -->
+                </div>
+                <div class="col-md-9 d-flex flex-column justify-content-center">
+                    <h3 class="card-title">@film.Title</h3>
+                    <p class="card-text">
+                        @if (film.Content.Length > 100)
+                        {
+                            @film.Content.Substring(0, 100)
+                            ;
+                        }
+                        else
+                        {
+                            @film.Content
+                        }
+                    </p>
+                    <p class="card-text"><small class="text-muted">Yazar: @film.Director</small></p>
+                    <p class="card-text"><small class="text-muted">Yayınlanma Tarihi: @film.PublishDate.ToShortDateString()</small></p>
+                    <a href="@Url.Action("BlogDetail", "Home", new { id = film.Id })" class="btn btn-primary">Devamını Oku</a> <!-- Yönlendirme Eklendi -->
+                </div>
+
+            </div>
+        }
+
+    </div>
+
+</div>

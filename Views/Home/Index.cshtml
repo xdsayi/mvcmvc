@@ -1,0 +1,45 @@
+﻿@model IEnumerable<mvcmvc.Data.Blog>
+
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="text-center">
+    <h1 class="display-4">SİNEKEL</h1>
+    <p>Kabataş Erkek Lisesi Sinema ve Fotoğrafçılık Kulübü</p>
+</div>
+    <div class="blog-list">
+        <div class="container">
+                @foreach (var blog in Model)
+                {
+                    <div class="row mb-4" >
+                        <div class="col-md-3">
+                            <img src="@blog.ImagePath" class="card-img-top" alt="@blog.Title"> <!-- Resim Eklendi -->
+                        </div>
+                            <div class="col-md-9 d-flex flex-column justify-content-center">
+                                <h3 class="card-title">@blog.Title</h3>
+                                <p class="card-text">
+                                    @if (blog.Content.Length > 100)
+                                    {
+                                        @blog.Content.Substring(0, 100)
+                                        ;
+                                    }
+                                    else
+                                    {
+                                        @blog.Content
+                                    }
+                                </p>
+                                <p class="card-text"><small class="text-muted">Yazar: @blog.Director</small></p>
+                                <p class="card-text"><small class="text-muted">Yazar: @blog.Genre</small></p>
+                                <p class="card-text"><small class="text-muted">Yayınlanma Tarihi: @blog.PublishDate.ToShortDateString()</small></p>
+                                <a href="@Url.Action("BlogDetail", "Home", new { id = blog.Id })" class="btn btn-primary">Devamını Oku</a> <!-- Yönlendirme Eklendi -->
+                            </div>
+                        
+                    </div>
+                }
+            
+        </div>
+        <p><a href="/Home/Privacy">Gizlilik Politikamız hakkında bilgi edinin.</a></p>
+</div>
+

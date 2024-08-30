@@ -1,0 +1,18 @@
+﻿@model mvcmvc.Data.Blog
+
+@{
+    ViewData["Title"] = @Model.Title;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container my-4">
+    <h1>@Model.Title</h1>
+    @if (!string.IsNullOrEmpty(Model.ImagePath))
+    {
+        <img src="@Model.ImagePath" alt="Blog Image" class="blog-image" />
+    }
+    <p>@Model.Content</p>
+    <p><small class="text-muted">Yazar: @Model.Director</small></p>
+    <p><small class="text-muted">Yazar: @Model.Genre</small></p>
+    <p><small class="text-muted">Yayınlanma Tarihi: @Model.PublishDate.ToShortDateString()</small></p>
+</div>

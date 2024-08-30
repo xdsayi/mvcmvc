@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Admin Login";
+}
+
+<form asp-action="Login" method="post"/>
+    <input type="hidden" name="ReturnUrl" value="@ViewData["ReturnUrl"]" /> 
+
+<div class="text-center">
+    <img src="~/images/kel logo.png" style="width:250px; height:auto;" />
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+            <div style="color: red;">@ViewBag.ErrorMessage</div>
+    }
+
+    <form method="post" action="/Admin/Index">
+        <div>
+            <input type="text" id="username" name="username" placeholder="Kullanıcı Adı" required />
+        </div>
+        <div>
+            <input type="password" id="password" name="password" placeholder="Şifre" required />
+        </div>
+        <div>
+            <button type="submit">Giriş</button>
+        </div>
+    </form>
+
+    <style>
+        input[type="text"], input[type="password"] {
+            width: 20%;
+            padding: 3px 15px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]::placeholder, input[type="password"]::placeholder {
+            color: #ccc;
+        }
+
+        button {
+            width: 10%;
+            background-color: #3a5fcd;
+            color: white;
+            padding: 5px 6px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</div>

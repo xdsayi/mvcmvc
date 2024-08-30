@@ -1,0 +1,74 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.navbar-logo {
+    width: 60px; /* Geniþliði ayarlayýn */
+    height: auto; /* Oraný korumak için height'ý auto olarak býrakýn */
+    margin-right: 5px; /* Metin ile resim arasýndaki boþluk */
+}
+body {
+    font-family: Papyrus, Fantasy;
+    background-color: #d8dece;
+    margin: 0;
+    padding: 0;
+}
+
+h1.my-4 {
+    text-align: center;
+    color: #343a40;
+}
+
+
+
+.poster-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 400px; /* Resim yüksekliði ayarý */
+}
+
+.row {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+}
+

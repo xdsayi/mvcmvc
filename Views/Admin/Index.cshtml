@@ -1,0 +1,84 @@
+﻿@model AdminIndexViewModel
+
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Admin Dashboard</h1>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Blog</a>
+    <a asp-action="CreateFilm" class="btn btn-primary">Create New Film</a>
+</p>
+<h2>Blogs</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Publish Date</th>
+            <th>Poster</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var blog in Model.Blogs)
+        {
+            <tr>
+                <td>@blog.Title</td>
+                <td>@blog.Content</td>
+                <td>@blog.Director</td>
+                <td>@blog.Genre</td>
+                <td>@blog.PublishDate</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(blog.ImagePath))
+                    {
+                        <img src="@blog.ImagePath" alt="Blog Image" style="width: 100px; height: auto;" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@blog.Id" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@blog.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    
+
+<h2>Films</h2>
+<table class="table">
+    <thead>
+        <tr>
+             
+            <th>Title</th>
+            <th>Content</th>
+            <th>Director</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var film in Model.Films)
+        {
+            <tr>
+                <td>@film.Title</td>
+                <td>@film.Content</td>
+                <td>@film.Director</td>
+                <td>@film.Genre</td>
+                <td>@film.PublishDate</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(film.PosterPath))
+                    {
+                        <img src="@film.PosterPath" alt="Film Poster" style="width: 100px; height: auto;" />
+                    }
+                </td>
+                <td>
+                    <a asp-action="EditFilm" asp-route-id="@film.Id" class="btn btn-warning">Edit</a> |
+                    <a asp-action="DeleteFilm" asp-route-id="@film.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
